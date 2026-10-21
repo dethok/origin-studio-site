@@ -1,0 +1,4 @@
+research/lattice/*.json
+research/lattice/probe*.py
+.DS_Store
+node_modules/
