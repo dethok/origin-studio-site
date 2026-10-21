@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 REPO=dethok/origin-studio-site
-URL=https://dethok.github.io/origin-studio-site/
+URL=https://dethok.com/origin-studio-site/
 [ -z "$(git status --porcelain)" ] || { echo "uncommitted changes — commit first"; exit 1; }
 git push -u origin main
 gh api -X POST "repos/$REPO/pages" -f build_type=legacy -f 'source[branch]=main' -f 'source[path]=/' >/dev/null 2>&1 || true
