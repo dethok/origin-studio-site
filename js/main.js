@@ -7,11 +7,6 @@
   // placeholder links go nowhere
   $$('a[data-ph]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
 
-  // announcement bar
-  var banner = $('#banner');
-  if (store.get('origin-banner') === '1') banner.hidden = true;
-  $('#banner-x').addEventListener('click', function () { banner.hidden = true; store.set('origin-banner', '1'); });
-
   // mega menus: click to open, outside click / Esc close
   var dds = $$('.dd');
   function closeAll(focusBack) {
@@ -96,11 +91,4 @@
     msgs.forEach(function (m, i) { ct.from(m, { y: 40, opacity: 0, duration: 1 }, i); });
     ct.from(last, { filter: 'blur(8px)', duration: 1 }, msgs.length - 1 + 0.3);
   }
-
-  // testimonials
-  if ($('#sw') && window.Swiper) new Swiper('#sw', {
-    loop: true, centeredSlides: true, slidesPerView: 'auto', spaceBetween: 24, speed: 500,
-    autoplay: reduce ? false : { delay: 4000, pauseOnMouseEnter: true, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true }
-  });
 })();
