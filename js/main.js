@@ -25,11 +25,12 @@
       if (!was) { d.classList.add('open'); t.setAttribute('aria-expanded', 'true'); }
     });
   });
-  document.addEventListener('click', function (e) { if (!e.target.closest('.dd')) closeAll(); });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.dd') || e.target.closest('.panel a')) closeAll(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(true); });
 
   // mobile hamburger
   var nav = $('#nav'), burger = $('#burger');
+  $$('.panel a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
   burger.addEventListener('click', function () {
     var o = nav.classList.toggle('open');
     burger.setAttribute('aria-expanded', o);
